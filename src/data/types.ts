@@ -1,17 +1,12 @@
 export type ClipId =
   | "01-morning-inbox"
   | "02-prospecting-pg"
-  | "03-slides-granola"
-  | "04-engineer-bugbot"
-  | "05-forecast-sfdc"
-  | "06-customer-expert"
-  | "07-customer-exec-brief"
-  | "08-chief-groupchat";
+  | "03-slides-granola";
 
 export type JobId =
-  | "standardize-room"
-  | "legal-redlines"
-  | "attach-engine";
+  | "meeting-deck"
+  | "answer-research"
+  | "account-outreach";
 
 export type ParticipantRole = "you" | "bot";
 
@@ -23,29 +18,16 @@ export type Participant = {
   color?: string;
 };
 
-export type MessageKind = "text" | "draft" | "routine" | "handoff" | "system";
-
-export type SlideVoice = "them" | "us";
+export type MessageKind = "text" | "draft" | "routine" | "system";
 
 export type SlideCard = {
   n: number;
   title: string;
   body: string;
   kicker?: string;
-  voice?: SlideVoice;
 };
 
-export type StoryScene =
-  | "call"
-  | "demo"
-  | "voice"
-  | "notes"
-  | "deck"
-  | "map"
-  | "inspect"
-  | "launch"
-  | "drill"
-  | "send";
+export type StoryScene = "call" | "notes" | "deck" | "inspect" | "send";
 
 export type StoryVisual =
   | {
@@ -54,10 +36,10 @@ export type StoryVisual =
       people: { initials: string; name: string }[];
     }
   | {
-      kind: "live-transcript";
+      kind: "meeting-note";
       timestamp: string;
-      speaker: string;
-      quote: string;
+      label: string;
+      note: string;
       signals: string[];
     }
   | {
@@ -68,10 +50,10 @@ export type StoryVisual =
       status: string;
     }
   | {
-      kind: "procurement-email";
+      kind: "request-email";
       sender: string;
       subject: string;
-      questions: number;
+      request: string;
     }
   | {
       kind: "answers-found";
@@ -91,7 +73,7 @@ export type StoryVisual =
       signal: string;
     }
   | {
-      kind: "three-why";
+      kind: "account-brief";
       items: { label: string; answer: string }[];
     }
   | {
@@ -105,7 +87,6 @@ export type StoryBeat = {
   label: string;
   scene: StoryScene;
   when?: string;
-  slides?: SlideCard[];
   artifact?: Artifact;
   visual?: StoryVisual;
 };
@@ -117,97 +98,26 @@ export type Artifact =
       cards: SlideCard[];
     }
   | {
-      kind: "one-pager";
+      kind: "answer-brief";
       title: string;
-      eyebrow?: string;
-      sections: { heading: string; body: string }[];
+      request: string;
+      status: string;
+      sources: { source: string; finding: string }[];
+      draft: { to: string; subject: string; body: string };
     }
   | {
-      kind: "packet";
-      title: string;
-      fields: { label: string; value: string }[];
-    }
-  | {
-      kind: "table";
-      title: string;
-      caption?: string;
-      columns: string[];
-      rows: string[][];
-    }
-  | {
-      kind: "outbound";
+      kind: "outreach";
       title: string;
       account: string;
-      hypothesis: { k: string; body: string }[];
+      summary: string;
       evidence: { source: string; finding: string }[];
-      targets: { name: string; role: string; why: string }[];
+      contactRole: string;
+      drafts: {
+        channel: "Email" | "LinkedIn";
+        subject?: string;
+        body: string;
+      }[];
       page: { headline: string; body: string };
-    }
-  | {
-      kind: "linkedin";
-      title: string;
-      to: string;
-      role?: string;
-      body: string;
-    }
-  | {
-      kind: "talk-tracks";
-      title: string;
-      tracks: { seat: string; line: string }[];
-    }
-  | {
-      kind: "forecast";
-      title: string;
-      status: string;
-      body: string;
-      account?: string;
-      amount?: string;
-      gaps?: { label: string; body: string }[];
-    }
-  | {
-      kind: "gaps";
-      title: string;
-      items: { label: string; body: string }[];
-    }
-  | {
-      kind: "questions";
-      title: string;
-      items: string[];
-    }
-  | {
-      kind: "scorecard";
-      title: string;
-      score: string;
-      notes: string[];
-      betterAnswer: string;
-      weakLine?: string;
-    }
-  | {
-      kind: "deal-kit";
-      title: string;
-      weeks: { label: string; body: string }[];
-      pack: string[];
-    }
-  | {
-      kind: "redlines";
-      title: string;
-      paperTitle: string;
-      from: string;
-      marks: { text: string; note: string; take: boolean }[];
-      reply: { to: string; subject: string; body: string };
-    }
-  | {
-      kind: "gmail";
-      title: string;
-      to: string;
-      subject: string;
-      body: string;
-    }
-  | {
-      kind: "slack";
-      title: string;
-      channel: string;
-      body: string;
     };
 
 export type DemoMessage = {
@@ -235,16 +145,14 @@ export type Clip = {
   caption: string;
 };
 
-export type CroJob = {
+export type GtmJob = {
   id: JobId;
   number: number;
+  agent: string;
   title: string;
   trigger: string;
   backgroundAction: string;
-  problem: string;
-  botJob: string;
   storyboard: StoryBeat[];
-  unlock: string;
   outcome: string;
   clips: ClipId[];
   demo: DemoThread;

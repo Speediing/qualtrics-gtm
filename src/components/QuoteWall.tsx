@@ -1,27 +1,14 @@
 import { QUOTES } from "@/data/quotes";
 
-const FEATURED_SOURCES = [
-  "https://x.com/naval/status/2090497355649008059",
-  "https://x.com/Austen/status/2087685264617406963",
-  "https://x.com/AlexFinn/status/2089505950470459659",
-  "https://x.com/lennysan/status/2087241423792087518",
-  "https://x.com/GergelyOrosz/status/2090353329771631080",
-  "https://x.com/yunta_tsai/status/2087415205756391461",
-];
-
 export function QuoteWall() {
-  const featuredQuotes = QUOTES.filter((quote) =>
-    FEATURED_SOURCES.includes(quote.source),
-  );
-
   return (
     <section id="testimonials" className="quotes">
-      <h2>Testimonials</h2>
+      <h2>What people say about Grok Bot</h2>
       <p className="section-lede">
-        Six reactions that capture the persistent-agent difference.
+        These public posts link to their original sources.
       </p>
       <div className="quote-thread">
-        {featuredQuotes.map((quote) => (
+        {QUOTES.map((quote) => (
           <article
             key={`${quote.handle}-${quote.date}-${quote.source}`}
             className="quote-row"

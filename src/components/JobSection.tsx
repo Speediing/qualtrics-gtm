@@ -1,18 +1,17 @@
-import type { CroJob, JobId } from "@/data/types";
+import type { GtmJob, JobId } from "@/data/types";
 import { Storyboard } from "./Storyboard";
 import { ChapterPayoff } from "./ChapterPayoff";
 import { JobMore } from "./JobMore";
 
 const JOB_ART: Record<JobId, string> = {
-  "standardize-room": "/brand/watercolor-room.png",
-  "legal-redlines": "/brand/watercolor-deal.png",
-  "attach-engine": "/brand/watercolor-attach.png",
+  "meeting-deck": "/brand/watercolor-room.png",
+  "answer-research": "/brand/watercolor-deal.png",
+  "account-outreach": "/brand/watercolor-attach.png",
 };
 
-export function JobSection({ job }: { job: CroJob }) {
+export function JobSection({ job }: { job: GtmJob }) {
   const lastBeat = job.storyboard[job.storyboard.length - 1];
-  const payoff =
-    lastBeat?.artifact || lastBeat?.slides?.length ? lastBeat : undefined;
+  const payoff = lastBeat?.artifact ? lastBeat : undefined;
   const lead = payoff ? job.storyboard.slice(0, -1) : job.storyboard;
 
   return (
@@ -28,7 +27,7 @@ export function JobSection({ job }: { job: CroJob }) {
         <div className="background-agent">
           <span className="background-agent-pulse" aria-hidden />
           <p>
-            <strong>Background agent active</strong>
+            <strong>{job.agent} is working</strong>
             <small>
               {job.trigger} → {job.backgroundAction}
             </small>
@@ -38,7 +37,7 @@ export function JobSection({ job }: { job: CroJob }) {
         <p className="job-value">{job.outcome}</p>
         <Storyboard beats={lead} />
         {payoff ? (
-          <ChapterPayoff beat={payoff} wash={JOB_ART[job.id]} />
+          <ChapterPayoff beat={payoff} />
         ) : null}
         <JobMore job={job} />
       </div>

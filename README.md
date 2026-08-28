@@ -1,12 +1,8 @@
-# Grok Bot for Datadog GTM
+# Qualtrics x SpaceXAI
 
-Passworded site. Grok Bot from SpaceXAI, for Datadog GTM.
+This private Next.js site is a GTM leave-behind for Qualtrics. It shows three illustrative Grok Bot workflows and keeps every draft behind human review.
 
-## What it is
-
-Three GTM jobs on one page. Each job has a short problem statement, an interactive Grok Bot demo, and the matching Krista Letz clips under that demo. Below that: a light index of the clips and the public Grok Bot quote wall.
-
-## Run locally
+## Run the site
 
 ```bash
 cp .env.example .env.local
@@ -14,18 +10,14 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Default password is `land2expand` (override with `SITE_PASSWORD`).
+Open [http://localhost:3000](http://localhost:3000).
 
-## Krista clips
+## Configure the password
 
-Download into `private/media/krista-clips/` from the GitHub release (served only through the passworded `/api/media/...` route):
+Set `SITE_PASSWORD` in the local or deployment environment. The password gate protects the page and the private video route.
 
-```bash
-gh release download krista-gtm-clips-720p-2026-08-26 \
-  --repo Speediing/grok-bot-quotes \
-  --dir private/media/krista-clips
-```
+## Brand assets
 
-## Deploy
+`public/brand/qualtrics-wordmark.svg` contains the official Qualtrics-authored wordmark. The recorded source is [Qualtrics Employee Pulse](https://www.qualtrics.com/employee-pulse/).
 
-Preview only under the `jasonwiker` Vercel team, project name `datadog-cro`. Set `SITE_PASSWORD=land2expand`. Do not promote to a public production domain until Jason says so.
+The target deployment is `https://qualtrics-grokbot.vercel.app`.

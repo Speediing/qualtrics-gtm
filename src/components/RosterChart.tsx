@@ -37,6 +37,7 @@ function Box({
       </span>
       <span className="org-name">{bot.name}</span>
       <span className="org-blurb">{bot.blurb}</span>
+      <span className="org-computer">{bot.computer}</span>
     </>
   );
 
@@ -59,11 +60,12 @@ export function RosterChart() {
 
   return (
     <section id="roster" className="roster">
-      <h2>A background team for every sales rep</h2>
+      <p className="eyebrow">A named fleet</p>
+      <h2>Each agent has its own computer.</h2>
       <p className="section-lede">
-        The work itself is the trigger. A call starts, an email lands, or an
-        account enters the list — and the right agent picks it up. They keep
-        working after the laptop closes. Drafts stay drafts until the rep sends.
+        Nova, Scout, and Echo work in separate browsers and files. They can keep
+        a task moving after the seller closes the laptop. Drafts stay in review
+        until a person sends them.
       </p>
 
       <div className="org" role="tree">

@@ -1,7 +1,9 @@
+import { AccountContext } from "@/components/AccountContext";
 import { CompareTable } from "@/components/CompareTable";
 import { HeroTelemetry } from "@/components/HeroTelemetry";
 import { JobSection } from "@/components/JobSection";
 import { QuoteWall } from "@/components/QuoteWall";
+import { RosterChart } from "@/components/RosterChart";
 import { SiteNav } from "@/components/SiteNav";
 import { JOBS } from "@/data/jobs";
 
@@ -23,24 +25,23 @@ export default function HomePage() {
           <HeroTelemetry />
           <section className="hero">
             <div>
-              <p className="eyebrow">A proactive agent for every Datadog rep</p>
-              <h1>The agents that work while your reps sell.</h1>
+              <p className="eyebrow">Qualtrics x SpaceXAI</p>
+              <h1>A fleet that keeps GTM work moving.</h1>
               <p className="hero-intro">
-                Grok Bot listens to calls, watches the inbox, and researches
-                accounts in the background. Work triggers it — not another
-                prompt.
+                Each named agent has its own computer, browser, and files. It
+                can pick up a clear task, keep working in the background, and
+                bring a draft back for review.
               </p>
             </div>
           </section>
 
           <section className="usecase-framing">
             <p className="eyebrow">Three sample use cases</p>
-            <h2>
-              Grok Bot gives every seller their own fleet of always-available
-              agent teammates. Anything your sellers do today can be done
-              through Grok Bot.
-            </h2>
-            <p>These are three examples from millions — not the boundary.</p>
+            <h2>Three clear examples for Qualtrics GTM.</h2>
+            <p>
+              The output below is illustrative. It uses role labels and
+              placeholders until a source is confirmed.
+            </p>
           </section>
 
           <div className="metric-grid">
@@ -51,14 +52,19 @@ export default function HomePage() {
                 href={`#${job.id}`}
               >
                 <div className="metric-card-top">
-                  <p>Sample {String(job.number).padStart(2, "0")}</p>
+                  <p>
+                    {job.agent} · sample {String(job.number).padStart(2, "0")}
+                  </p>
                 </div>
                 <h2>{job.title}</h2>
                 <p className="metric-trigger">Starts when {job.trigger.toLowerCase()}</p>
               </a>
             ))}
           </div>
+          <AccountContext />
         </div>
+
+        <RosterChart />
 
         <div id="jobs">
           {JOBS.map((job) => (
@@ -79,14 +85,14 @@ export default function HomePage() {
 
       <footer className="site-footer">
         <div>
-          <p className="footer-title">Cursor for Datadog</p>
-          <p>Grok Bot for Datadog sales</p>
+          <p className="footer-title">Qualtrics x SpaceXAI</p>
+          <p>Illustrative GTM leave-behind</p>
         </div>
         <address className="footer-contact">
-          <p>Datadog&apos;s existing Cursor contact</p>
-          <strong>Madeline Ingleby</strong>
-          <a href="mailto:madeline.ingleby@cursor.com">
-            madeline.ingleby@cursor.com
+          <p>Cursor account executive</p>
+          <strong>Sean Middleton, AE</strong>
+          <a href="mailto:sean.middleton@cursor.com">
+            sean.middleton@cursor.com
           </a>
         </address>
       </footer>
