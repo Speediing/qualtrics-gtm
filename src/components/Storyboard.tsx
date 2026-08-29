@@ -158,7 +158,7 @@ function LiveVisual({ visual }: { visual: StoryVisual }) {
       return (
         <div className="story-ui story-answers-ui" aria-hidden>
           <header className="story-ui-bar">
-            <strong>Product Answer Agent checked the sources</strong>
+            <strong>Inbox agent checked the sources</strong>
             <span>{visual.status}</span>
           </header>
           <ul>

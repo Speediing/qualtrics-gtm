@@ -104,12 +104,11 @@ export const HERO_JOBS = [
     mark: "SC",
     tone: "violet",
     account: "Example account",
-    signal: "[Illustrative planning request]",
-    detail:
-      "Collect the [reviewed note], [verified signal], and [open question] for the rep.",
-    result: "Illustrative brief ready",
-    userMessage: "Build the brief. Keep every open detail in brackets.",
-    botMessage: "Draft brief is ready for review. Nothing sent.",
+    signal: "[Illustrative context request]",
+    detail: "Use confirmed account notes. Leave unverified items as placeholders.",
+    result: "Context brief ready",
+    userMessage: "Build the context brief from confirmed notes.",
+    botMessage: "Brief is ready. Unverified items stay marked as placeholders.",
   },
 ] as const satisfies readonly HeroJob[];
 

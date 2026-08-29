@@ -60,12 +60,11 @@ export function RosterChart() {
 
   return (
     <section id="roster" className="roster">
-      <p className="eyebrow">A product fleet</p>
-      <h2>Each agent has its own computer.</h2>
+      <h2>A background team for every sales rep</h2>
       <p className="section-lede">
-        Every sales rep stays in control. Each product agent works on its own
-        computer and brings a draft back for review. Nothing sends until the rep
-        approves it.
+        The work itself is the trigger. A call starts, an email lands, or an
+        account enters the list, and the right agent picks it up. They keep
+        working after the laptop closes. Drafts stay drafts until the rep sends.
       </p>
 
       <div className="org" role="tree">

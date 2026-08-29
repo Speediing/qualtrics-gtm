@@ -13,17 +13,17 @@ export type FleetNode = {
 
 export const FLEET: FleetNode[] = [
   {
-    id: "sales-rep",
+    id: "rep",
     name: "Every sales rep",
-    blurb: "Reviews every draft and decides what gets sent.",
-    computer: "The rep stays in control",
+    blurb: "The seller reviews the work and decides what gets sent.",
+    computer: "Reviews drafts before send",
     color: "#e8f7f7",
-    mark: "SR",
-    rep: true,
+    mark: "AE",
+    seat: true,
   },
   {
-    id: "call-follow-up-agent",
-    name: "Call Follow-up Agent",
+    id: "meeting",
+    name: "Meeting agent",
     blurb: "Follows a live meeting and updates the open deck.",
     computer: "Own computer: meeting notes and deck",
     jobId: "meeting-deck",
@@ -31,8 +31,8 @@ export const FLEET: FleetNode[] = [
     mark: "CF",
   },
   {
-    id: "product-answer-agent",
-    name: "Product Answer Agent",
+    id: "inbox",
+    name: "Inbox agent",
     blurb: "Checks approved product and internal sources before drafting.",
     computer: "Own computer: docs and inbox",
     jobId: "answer-research",
@@ -40,8 +40,8 @@ export const FLEET: FleetNode[] = [
     mark: "PA",
   },
   {
-    id: "account-research-agent",
-    name: "Account Research Agent",
+    id: "outbound",
+    name: "Outbound agent",
     blurb: "Researches an account and prepares outreach for review.",
     computer: "Own computer: browser and drafts",
     jobId: "account-outreach",
