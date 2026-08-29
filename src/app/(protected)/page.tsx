@@ -1,4 +1,3 @@
-import { AccountContext } from "@/components/AccountContext";
 import { CompareTable } from "@/components/CompareTable";
 import { HeroDemo } from "@/components/HeroDemo";
 import { HeroTelemetry } from "@/components/HeroTelemetry";
@@ -52,7 +51,6 @@ export default function HomePage() {
               </a>
             ))}
           </div>
-          <AccountContext />
         </div>
 
         <RosterChart />

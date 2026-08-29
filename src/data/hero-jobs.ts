@@ -103,13 +103,12 @@ export const HERO_JOBS = [
     label: "Sales Chief of Staff",
     mark: "SC",
     tone: "violet",
-    account: "Qualtrics",
-    signal: "810/810 Cursor seats",
-    detail:
-      "TARS specifically needs Cursor SDK. Cursor Harness is rolling out with the Pixie engineering team.",
+    account: "Example account",
+    signal: "[Illustrative context request]",
+    detail: "Use confirmed account notes. Leave unverified items as placeholders.",
     result: "Context brief ready",
-    userMessage: "Build the Qualtrics context brief.",
-    botMessage: "Brief is ready with only the approved account facts.",
+    userMessage: "Build the context brief from confirmed notes.",
+    botMessage: "Brief is ready. Unverified items stay marked as placeholders.",
   },
 ] as const satisfies readonly HeroJob[];
 
