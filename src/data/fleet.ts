@@ -19,7 +19,7 @@ export const FLEET: FleetNode[] = [
     computer: "Reviews drafts before send",
     color: "#e8f7f7",
     mark: "AE",
-    seat: true,
+    rep: true,
   },
   {
     id: "meeting",
@@ -28,7 +28,6 @@ export const FLEET: FleetNode[] = [
     computer: "Own computer: meeting notes and deck",
     jobId: "meeting-deck",
     color: "#04c9ce",
-    mark: "CF",
   },
   {
     id: "inbox",
@@ -37,7 +36,6 @@ export const FLEET: FleetNode[] = [
     computer: "Own computer: docs and inbox",
     jobId: "answer-research",
     color: "#0768dd",
-    mark: "PA",
   },
   {
     id: "outbound",
@@ -46,6 +44,5 @@ export const FLEET: FleetNode[] = [
     computer: "Own computer: browser and drafts",
     jobId: "account-outreach",
     color: "#a54af4",
-    mark: "AR",
   },
 ];
