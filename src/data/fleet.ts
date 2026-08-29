@@ -1,6 +1,6 @@
 import type { JobId } from "./types";
 
-export type FleetBot = {
+export type FleetNode = {
   id: string;
   name: string;
   blurb: string;
@@ -8,41 +8,44 @@ export type FleetBot = {
   color: string;
   jobId?: JobId;
   mark?: string;
-  seat?: boolean;
+  rep?: boolean;
 };
 
-export const FLEET: FleetBot[] = [
+export const FLEET: FleetNode[] = [
   {
-    id: "team",
-    name: "Qualtrics GTM",
-    blurb: "The team reviews the work and decides what gets sent.",
-    computer: "Human approval",
+    id: "sales-rep",
+    name: "Every sales rep",
+    blurb: "Reviews every draft and decides what gets sent.",
+    computer: "The rep stays in control",
     color: "#e8f7f7",
-    mark: "QX",
-    seat: true,
+    mark: "SR",
+    rep: true,
   },
   {
-    id: "nova",
-    name: "Nova",
+    id: "call-follow-up-agent",
+    name: "Call Follow-up Agent",
     blurb: "Follows a live meeting and updates the open deck.",
-    computer: "Own computer: notes and deck",
+    computer: "Own computer: meeting notes and deck",
     jobId: "meeting-deck",
     color: "#04c9ce",
+    mark: "CF",
   },
   {
-    id: "scout",
-    name: "Scout",
+    id: "product-answer-agent",
+    name: "Product Answer Agent",
     blurb: "Checks approved product and internal sources before drafting.",
     computer: "Own computer: docs and inbox",
     jobId: "answer-research",
     color: "#0768dd",
+    mark: "PA",
   },
   {
-    id: "echo",
-    name: "Echo",
+    id: "account-research-agent",
+    name: "Account Research Agent",
     blurb: "Researches an account and prepares outreach for review.",
     computer: "Own computer: browser and drafts",
     jobId: "account-outreach",
     color: "#a54af4",
+    mark: "AR",
   },
 ];

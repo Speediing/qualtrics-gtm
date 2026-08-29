@@ -1,8 +1,8 @@
-import { FLEET, type FleetBot } from "@/data/fleet";
+import { FLEET, type FleetNode } from "@/data/fleet";
 
-function initials(bot: FleetBot) {
-  if (bot.mark) return bot.mark;
-  const parts = bot.name.split(/\s+/).filter(Boolean);
+function initials(node: FleetNode) {
+  if (node.mark) return node.mark;
+  const parts = node.name.split(/\s+/).filter(Boolean);
   if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
   return `${parts[0][0] || ""}${parts[parts.length - 1][0] || ""}`.toUpperCase();
 }
@@ -16,34 +16,34 @@ function isLight(hex: string) {
 }
 
 function Box({
-  bot,
-  chief = false,
+  node,
+  root = false,
 }: {
-  bot: FleetBot;
-  chief?: boolean;
+  node: FleetNode;
+  root?: boolean;
 }) {
-  const className = chief ? "org-box is-chief" : "org-box";
+  const className = root ? "org-box is-root" : "org-box";
   const body = (
     <>
       <span
         className="org-avatar"
         style={{
-          background: bot.color,
-          color: isLight(bot.color) ? "#111" : "#fff",
+          background: node.color,
+          color: isLight(node.color) ? "#111" : "#fff",
         }}
         aria-hidden
       >
-        {initials(bot)}
+        {initials(node)}
       </span>
-      <span className="org-name">{bot.name}</span>
-      <span className="org-blurb">{bot.blurb}</span>
-      <span className="org-computer">{bot.computer}</span>
+      <span className="org-name">{node.name}</span>
+      <span className="org-blurb">{node.blurb}</span>
+      <span className="org-computer">{node.computer}</span>
     </>
   );
 
-  if (bot.jobId) {
+  if (node.jobId) {
     return (
-      <a className={className} href={`#${bot.jobId}`}>
+      <a className={className} href={`#${node.jobId}`}>
         {body}
       </a>
     );
@@ -53,24 +53,24 @@ function Box({
 }
 
 export function RosterChart() {
-  const seat = FLEET.find((item) => item.seat);
-  const agents = FLEET.filter((item) => !item.seat);
+  const rep = FLEET.find((item) => item.rep);
+  const agents = FLEET.filter((item) => !item.rep);
 
-  if (!seat) return null;
+  if (!rep) return null;
 
   return (
     <section id="roster" className="roster">
-      <p className="eyebrow">A named fleet</p>
+      <p className="eyebrow">A product fleet</p>
       <h2>Each agent has its own computer.</h2>
       <p className="section-lede">
-        Nova, Scout, and Echo work in separate browsers and files. They can keep
-        a task moving after the seller closes the laptop. Drafts stay in review
-        until a person sends them.
+        Every sales rep stays in control. Each product agent works on its own
+        computer and brings a draft back for review. Nothing sends until the rep
+        approves it.
       </p>
 
       <div className="org" role="tree">
         <div className="org-top">
-          <Box bot={seat} chief />
+          <Box node={rep} root />
         </div>
         <div className="org-branch">
           <div className="org-connect" aria-hidden>
@@ -80,7 +80,7 @@ export function RosterChart() {
           <ul className="org-kids">
             {agents.map((agent) => (
               <li key={agent.id} className="org-kid">
-                <Box bot={agent} />
+                <Box node={agent} />
               </li>
             ))}
           </ul>

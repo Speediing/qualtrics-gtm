@@ -91,16 +91,18 @@ export const JOBS: GtmJob[] = [
   {
     id: "meeting-deck",
     number: 1,
-    agent: "Nova",
+    agent: "Call Follow-up Agent",
     title: "Update the deck during a live meeting",
     trigger: "a customer meeting starts",
-    backgroundAction: "Nova follows the notes and updates the open deck",
+    backgroundAction:
+      "The Call Follow-up Agent follows the notes and updates the open deck",
     outcome:
       "The seller leaves the meeting with a reviewed recap and a draft next step.",
     storyboard: [
       {
         when: "Meeting starts",
-        label: "Nova opens the meeting notes and the shared deck.",
+        label:
+          "The Call Follow-up Agent opens the meeting notes and shared deck.",
         scene: "call",
         visual: {
           kind: "live-call",
@@ -126,7 +128,8 @@ export const JOBS: GtmJob[] = [
       },
       {
         when: "Before the meeting ends",
-        label: "Nova updates the open deck and leaves it in draft.",
+        label:
+          "The Call Follow-up Agent updates the open deck and leaves it in draft.",
         scene: "deck",
         visual: {
           kind: "deck-update",
@@ -149,13 +152,13 @@ export const JOBS: GtmJob[] = [
     ],
     clips: ["03-slides-granola"],
     demo: {
-      title: "Nova",
+      title: "Call Follow-up Agent",
       subtitle: "Meeting notes to a draft deck",
       participants: [
         { id: "you", name: "You", role: "you" },
         {
-          id: "nova",
-          name: "Nova",
+          id: "call-follow-up-agent",
+          name: "Call Follow-up Agent",
           role: "bot",
           persona: "Keeps the meeting recap and deck moving",
           color: "#04c9ce",
@@ -164,19 +167,19 @@ export const JOBS: GtmJob[] = [
       messages: [
         {
           id: "m1",
-          from: "nova",
+          from: "call-follow-up-agent",
           kind: "routine",
           body: "Illustrative demo. The Example account meeting started, so I opened the notes and the shared deck on my computer.",
         },
         {
           id: "m2",
-          from: "nova",
+          from: "call-follow-up-agent",
           kind: "text",
           body: "I marked one useful note for the recap. I am keeping it as a summary, not a customer quote.",
         },
         {
           id: "m3",
-          from: "nova",
+          from: "call-follow-up-agent",
           kind: "draft",
           draftLabel: "Draft meeting recap",
           artifact: {
@@ -187,7 +190,7 @@ export const JOBS: GtmJob[] = [
         },
         {
           id: "m4",
-          from: "nova",
+          from: "call-follow-up-agent",
           kind: "system",
           body: "Nothing sent. The deck stays in draft until the seller reviews it.",
         },
@@ -197,16 +200,17 @@ export const JOBS: GtmJob[] = [
   {
     id: "answer-research",
     number: 2,
-    agent: "Scout",
+    agent: "Product Answer Agent",
     title: "Find product and internal answers",
     trigger: "a customer question arrives",
-    backgroundAction: "Scout checks approved sources and drafts a reply",
+    backgroundAction:
+      "The Product Answer Agent checks approved sources and drafts a reply",
     outcome:
       "The seller gets a sourced draft without asking several teams for the same answer.",
     storyboard: [
       {
         when: "Question arrives",
-        label: "Scout opens the request on its own computer.",
+        label: "The Product Answer Agent opens the request on its own computer.",
         scene: "notes",
         visual: {
           kind: "request-email",
@@ -217,7 +221,8 @@ export const JOBS: GtmJob[] = [
       },
       {
         when: "Research in progress",
-        label: "Scout checks approved product and internal sources.",
+        label:
+          "The Product Answer Agent checks approved product and internal sources.",
         scene: "inspect",
         visual: {
           kind: "answers-found",
@@ -249,13 +254,13 @@ export const JOBS: GtmJob[] = [
     ],
     clips: ["01-morning-inbox"],
     demo: {
-      title: "Scout",
+      title: "Product Answer Agent",
       subtitle: "Question to a sourced draft",
       participants: [
         { id: "you", name: "You", role: "you" },
         {
-          id: "scout",
-          name: "Scout",
+          id: "product-answer-agent",
+          name: "Product Answer Agent",
           role: "bot",
           persona: "Checks approved sources before drafting an answer",
           color: "#0768dd",
@@ -264,26 +269,26 @@ export const JOBS: GtmJob[] = [
       messages: [
         {
           id: "m1",
-          from: "scout",
+          from: "product-answer-agent",
           kind: "routine",
           body: "Illustrative demo. A product question arrived, so I opened the approved sources on my computer.",
         },
         {
           id: "m2",
-          from: "scout",
+          from: "product-answer-agent",
           kind: "text",
           body: "I found the current product answer and the approved internal wording. I attached the sources for review.",
         },
         {
           id: "m3",
-          from: "scout",
+          from: "product-answer-agent",
           kind: "draft",
           draftLabel: "Sourced answer",
           artifact: ANSWER_BRIEF,
         },
         {
           id: "m4",
-          from: "scout",
+          from: "product-answer-agent",
           kind: "system",
           body: "Nothing sent. The seller checks the answer and sources first.",
         },
@@ -293,16 +298,18 @@ export const JOBS: GtmJob[] = [
   {
     id: "account-outreach",
     number: 3,
-    agent: "Echo",
+    agent: "Account Research Agent",
     title: "Research an account and draft outreach",
     trigger: "an account enters the target list",
-    backgroundAction: "Echo gathers public evidence and prepares drafts",
+    backgroundAction:
+      "The Account Research Agent gathers public evidence and prepares drafts",
     outcome:
       "The seller starts with a researched account brief instead of a generic sequence.",
     storyboard: [
       {
         when: "Account added",
-        label: "Echo opens public sources for Example account.",
+        label:
+          "The Account Research Agent opens public sources for Example account.",
         scene: "inspect",
         visual: {
           kind: "account-research",
@@ -344,13 +351,13 @@ export const JOBS: GtmJob[] = [
     ],
     clips: ["02-prospecting-pg"],
     demo: {
-      title: "Echo",
+      title: "Account Research Agent",
       subtitle: "Public research to reviewed outreach",
       participants: [
         { id: "you", name: "You", role: "you" },
         {
-          id: "echo",
-          name: "Echo",
+          id: "account-research-agent",
+          name: "Account Research Agent",
           role: "bot",
           persona: "Builds account briefs from verified public evidence",
           color: "#a54af4",
@@ -359,26 +366,26 @@ export const JOBS: GtmJob[] = [
       messages: [
         {
           id: "m1",
-          from: "echo",
+          from: "account-research-agent",
           kind: "routine",
           body: "Illustrative demo. Example account entered the list, so I opened its public sources on my computer.",
         },
         {
           id: "m2",
-          from: "echo",
+          from: "account-research-agent",
           kind: "text",
           body: "I made a brief with placeholders for the signal, hypothesis, and role. Each one needs verified evidence before sending.",
         },
         {
           id: "m3",
-          from: "echo",
+          from: "account-research-agent",
           kind: "draft",
           draftLabel: "Account brief and outreach",
           artifact: OUTREACH_PACK,
         },
         {
           id: "m4",
-          from: "echo",
+          from: "account-research-agent",
           kind: "system",
           body: "Nothing sent. The seller reviews the evidence and replaces every placeholder.",
         },
