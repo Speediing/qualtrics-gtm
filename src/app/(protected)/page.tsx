@@ -1,5 +1,6 @@
 import { AccountContext } from "@/components/AccountContext";
 import { CompareTable } from "@/components/CompareTable";
+import { HeroDemo } from "@/components/HeroDemo";
 import { HeroTelemetry } from "@/components/HeroTelemetry";
 import { JobSection } from "@/components/JobSection";
 import { QuoteWall } from "@/components/QuoteWall";
@@ -23,17 +24,7 @@ export default function HomePage() {
       <div className="report">
         <div className="report-hero">
           <HeroTelemetry />
-          <section className="hero">
-            <div>
-              <p className="eyebrow">Qualtrics x SpaceXAI</p>
-              <h1>A fleet that keeps GTM work moving.</h1>
-              <p className="hero-intro">
-                Each named agent has its own computer, browser, and files. It
-                can pick up a clear task, keep working in the background, and
-                bring a draft back for review.
-              </p>
-            </div>
-          </section>
+          <HeroDemo />
 
           <section className="usecase-framing">
             <p className="eyebrow">Three sample use cases</p>
